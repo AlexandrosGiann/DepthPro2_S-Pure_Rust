@@ -1,0 +1,27 @@
+[package]
+name = "depthpro2-s"
+version = "0.1.0"
+edition = "2021"
+default-run = "depthpro2-s"
+
+[lib]
+path = "depthpro2.rs"
+
+[[bin]]
+name = "depthpro2-s"
+path = "predict.rs"
+
+[[bin]]
+name = "depthpro2-gui"
+path = "gui.rs"
+required-features = ["gui"]
+
+[features]
+gui = ["dep:eframe", "dep:image", "dep:rfd"]
+
+[dependencies]
+eframe = { version = "0.33", default-features = false, features = ["default_fonts", "glow", "x11"], optional = true }
+image = { version = "0.25.10", default-features = false, features = ["jpeg", "png", "webp"], optional = true }
+matrixmultiply = "0.3.11"
+rfd = { version = "0.15", optional = true }
+serde_json = "1.0"
